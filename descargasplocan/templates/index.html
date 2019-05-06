@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plocan Descargas</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/logo2.png' %}" >
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Css.css' %}">
+<head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"style="z-index:1;">
+                        <img class="navbar-brand" src="{% static 'img/logo.png' %}" alt="logoPlocanDescargas" style="width: 5%;">           
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'start' %}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=b3m">B3M</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=proyectos">Proyectos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=posters">Posters</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=manuales">Manuales</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=informes">Informes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=memorias">Memorias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=exposiciones">Exposiciones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=undefined">Otros</a></li>
+                  </ul>
+                </div>
+              </nav>
+            <div class="container-fluid">
+            <div class="row-">
+                <div class="col col-12">
+                    <div class="blue-bg"></div>
+                    <img id="banner" src="{% static 'img/BannerPlocanDescargasEsText.png' %}"  alt="BannerPlocanDescargas">
+                     <div class="ContainerGeneral">
+                        <div class="text2">
+                            <h1>Información</h1>
+                        </br>
+                            <p>Los siguientes documentos descagables se coresponden con material divulgativo de la plataforma oceáno grafica de canarias
+                                (<a href="http://plocan.eu/index.php/es/" target="_blank">Plocan</a>) y de proyectos en los que plocan participa como socio y/o coordinador
+                            </br></br>Todos los datos de descarga tienen fines estadísticos
+                            </p>
+                                <div class="mouse_scroll">
+                                    <div class="mouse">
+                                        <div class="wheel"></div>
+                                    </div>
+                                    <div>
+                                        <span class="m_scroll_arrows unu"></span>
+                                        <span class="m_scroll_arrows doi"></span>
+                                    </div>
+                                </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+        <div class="col col-12">
+            <div class="ContainerDescargas">
+            <div class="text1">
+          <h1>Descargas</h1>
+              {% if data.files %}
+                  <ul id="listaArchivos">
+                      {% for file in data.files %}
+                          <li><a href="{% url 'form' %}?id={{ file.id }}" target="popup" onClick="window.open(this.href, this.target, 'width=330,height=430'); return false;">{{ file.name }}</a></li>
+                      {% endfor %}
+                  </ul>
+              {% endif %}
+        </div>
+        </div>
+</div>
+<div class="col col-12">
+    <footer>
+        <img src="{% static 'img/pastillaplocan.png' %}"  alt="">
+        <div class="social">
+       <a href="https://www.facebook.com/plocan/"><img id="social" src="{% static 'img/facebook.png' %}"  alt="facebook"></a>
+       <a href="https://twitter.com/plocan"><img id="social" src="{% static 'img/twitter.png' %}"  alt="twitter"></a>
+       <a href="https://es.linkedin.com/company/plocan"><img id="social" src="{% static 'img/linkedin.png' %}"  alt="linkedin"></a>
+       <a href="https://www.youtube.com/user/plocanplataforma"><img id="social" src="{% static 'img/youtube.png' %}"  alt="youtube"></a>
+        </div>
+    </footer>
+</div>
+</div>
+</div>
+<!-- Desarrollador del BackEnd: Daniel Falcon Ruiz
+Desarrollador del FrontEnd: Daniel Alamo Reyes -->
+</body>
+</html>

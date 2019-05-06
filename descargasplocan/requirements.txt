@@ -1,0 +1,8 @@
+data==0.4
+decorator==4.4.0
+Django==2.2
+funcsigs==1.0.2
+mysqlclient==1.4.2
+pytz==2019.1
+six==1.12.0
+sqlparse==0.3.0

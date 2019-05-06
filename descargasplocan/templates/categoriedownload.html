@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if data.cat == 'undefined' %}
+        <title>Plocan - Otros</title>
+    {% else %}
+        <title>Plocan - {{ data.cat }}</title>
+    {% endif %}
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.png' %}" sizes="64x64">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Css.css' %}">
+</head>
+<body>
+<!-- la categoria de undefined hace referencia a la categoria visual de otros -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light"style="z-index:1;">
+        <img class="navbar-brand" src="{% static 'img/logo.png' %}" alt="logoPlocanDescargas" style="width: 5%;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'start' %}">Inicio</a></li>
+                {% if data.cat == 'b3m' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=b3m">B3M</a></li>{% endif %}
+                {% if data.cat != 'b3m' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=b3m">B3M</a></li>{% endif %}
+                {% if data.cat == 'proyectos' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=proyectos">Proyectos</a></li>{% endif %}
+                {% if data.cat != 'proyectos' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=proyectos">Proyectos</a></li>{% endif %}
+                {% if data.cat == 'posters' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=posters">Posters</a></li>{% endif %}
+                {% if data.cat != 'posters' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=posters">Posters</a></li>{% endif %}
+                {% if data.cat == 'manuales' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=manuales">Manuales</a></li>{% endif %}
+                {% if data.cat != 'manuales' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=manuales">Manuales</a></li>{% endif %}
+                {% if data.cat == 'informes' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=informes">Informes</a></li>{% endif %}
+                {% if data.cat != 'informes' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=informes">Informes</a></li>{% endif %}
+                {% if data.cat == 'memorias' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=memorias">Memorias</a></li>{% endif %}
+                {% if data.cat != 'memorias' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=memorias">Memorias</a></li>{% endif %}
+                {% if data.cat == 'exposiciones' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=exposiciones">Exposiciones</a></li>{% endif %}
+                {% if data.cat != 'exposiciones' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=exposiciones">Exposiciones</a></li>{% endif %}
+                {% if data.cat == 'undefined' %}<li class="nav-item active"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=undefined">Otros</a></li>{% endif %}
+                {% if data.cat != 'undefined' %}<li class="nav-item"><a class="nav-link" href="{% url 'categoriesdownload' %}?cat=undefined">Otros</a></li>{% endif %}
+          </ul>
+        </div>
+      </nav>
+    <div class="container-fluid">
+    <div class="row-">
+        <div class="col col-12">
+            <div class="blue-bg"></div>
+            {% if data.cat == 'b3m' %}<img id="banner" src="{% static 'img/b3m.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+    {% if data.cat == 'manuales' %}<img id="banner" src="{% static 'img/Manuales.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+    {% if data.cat == 'proyectos' %}<img id="banner" src="{% static 'img/PROYECTOS.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+    {% if data.cat == 'posters' %}<img id="banner" src="{% static 'img/posters.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+    {% if data.cat == 'informes' %}<img id="banner" src="{% static 'img/informes.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+    {% if data.cat == 'memorias' %}<img id="banner" src="{% static 'img/memorias.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+    {% if data.cat == 'exposiciones' %}<img id="banner" src="{% static 'img/exposiciones.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+    {% if data.cat == 'undefined' %}<img id="banner" src="{% static 'img/otros.png' %}"  alt="BannerPlocanDescargas">{% endif %}
+
+             <div class="ContainerGeneral">
+                <div class="text2">
+                    {% for subcategory in data.subcategories %}      
+                    {% if subcategory.subcategory == null %}<ul  id="listaArchivosCategoria">{% endif %}
+                    {% if subcategory.subcategory != null %}<ul  id="listaArchivosCategoriaSubCat">{% endif %}
+                                {% if subcategory.subcategory != null %}
+                                    <h3>{{ subcategory.subcategory }}</h3>
+                                {% endif %}
+                                {% for file in data.files %}
+                                    {% if file.subcategory == subcategory.subcategory %}
+                                        <li><a href="{% url 'form' %}?id={{ file.id }}" target="popup" onClick="window.open(this.href, this.target, 'width=330,height=430'); return false;">{{ file.name }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+   
+
+</body>
+</html>

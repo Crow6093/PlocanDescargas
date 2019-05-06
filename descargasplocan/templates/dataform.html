@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.png' %}" sizes="64x64">
+    <title>Plocan Formulario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Css.css' %}">
+    <title>Rellene los campos</title>
+</head>
+<body id="Formulario">
+        <h1>Plocan Descargas</h1>
+    {% if data.saved != True %}
+    <div class="span">
+            <span size="5">*Es obligatorio rellenar todos los campos para proceder con la descarga*</span>
+    </div>
+    {% endif %}
+    {% if data.saved == True %}
+    <div class="span">
+            <span size="5">*Gracias Por Usar PLOCAN DESCARGAS*</span>
+    </div>
+    {% endif %}
+    <br>
+    {% if data.saved == False or data.saved == '' %}
+        <div class="form">
+            <form action="{% url 'formdatasave' %}" method="post">{% csrf_token %}
+                <input type="hidden" value="{{ data.id }}" name="id">
+                    <label for="name">Nombre: </label><br/>
+                    <input type="text" name="name" pattern="^[A-Za-z ,.'-]+$" required><br><br>
+                    <label for="location">Localidad: </label><br/>
+                    <input type="text" name="location" pattern="^[A-Za-z ,.'-]+$" required><br><br>
+                    <label for="purpose">Motivo de Descarga: </label><br>
+                    <textarea rows = "2" cols = "35" name = "purpose" required></textarea><br><br>
+                    <input type="submit">
+            </form>
+        </div>
+    {% elif data.saved == True %}
+        <div class="download" id="download" style="visibility: visible;">
+            <a href="{% url 'downloadfile' %}?id={{ data.id }}">Descargar Aqui!</a>
+        </div>
+    {% endif %}
+
+</body>
+</html>
